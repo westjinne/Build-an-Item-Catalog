@@ -1,0 +1,32 @@
+<html>
+<body>
+
+<h1> Choose Category </h1>
+
+<p>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li><strong>{{message}}</strong></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </p>
+  
+<form action = "{{url_for('newCategory')}}" method = 'POST'>
+
+  <p> Categories: </p>
+    <input type = 'text' size = '40' categories = 'categories'>
+
+    <input type = 'submit' categories = 'categories' value = 'Create'>
+
+  <p>
+    <a href = '{{url_for('showCatalog')}}'> Cancel </a>
+  </p>
+
+</form>
+
+</body>
+</html>

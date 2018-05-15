@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+</head>
+
+<body>
+<div class = "bar">
+<a href='{{url_for('showCatalog')}}'> <h1> Catalog App </h1> </a>
+</div>
+<div class = "inform">
+<h2> Edit Item {{item.name}} </h2>
+</div>
+
+<form method = 'POST'>
+  <div> <b> Name: </b> </div>
+    <input type = 'text' size = '30' name = 'name' placeholder = '{{item.name}}'>
+  <div> <b> Description: </b> </div>
+    <input type = 'text' size = '30' name = 'description' placeholder = '{{item.description}}'>
+
+  <div> <b> Category: </b> </div>
+    <select name = "category">
+    {% for c in categories %}
+      {% if item and item.category_categories == c.categories %}
+      <option name = "{{c.categories}}" value = "{{c.categories}}" selected> {{c.categories}} </option>
+      {% else %}
+      <option name = "{{c.categories}}" value = "{{c.categories}}"> {{c.categories}} </option>
+      {% endif %}
+    {% endfor %}
+    </select>
+</br></br>
+<input type = 'submit' value = 'Edit'>
+<a href = '{{url_for('showCatalog')}}'> Cancel </a>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+</head>
+
+<body>
+  <div class = "bar">
+  <a href='{{url_for('showCatalog')}}'> <h1> Catalog App </h1> </a>
+  </div>
+  <div class = "inform">
+    <h2> New Item </h2>
+  </div>
+
+<form action = "{{url_for('newItem', category_name = category_name)}}" method = 'POST'>
+  <div> <h3> Name: </h3> </div>
+    <input type = 'text' size = '30' name = 'name'>
+
+  <div> <h3> Description: </h3> </div>
+    <input type = 'text' size = '30' name = 'description'>
+
+  <div> <h3> Category: </h3> </div>
+  <select name = "category">
+  {% for c in categories %}
+    {% if item and item.category_categories == c.categories %}
+    <option name = "{{c.categories}}" value = "{{c.categories}}" selected> {{c.categories}} </option>
+    {% else %}
+    <option name = "{{c.categories}}" value = "{{c.categories}}"> {{c.categories}} </option>
+    {% endif %}
+    {% endfor %}
+  </select>
+
+<div>
+  <input type = 'submit' value = 'Submit'>
+</div>
+
+</form>
+<div>
+<h2> Pre Items </h2>
+  {% for p in pre_items %}
+<div> {{p.name}} </div>
+  {% endfor %}
+</div>
+</body>
+</html>

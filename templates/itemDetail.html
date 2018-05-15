@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+</head>
+
+<body>
+  <div class = "bar">
+  <a href='{{url_for('showCatalog')}}'> <h1> Catalog App </h1> </a>
+  </div>
+<div class = "inform">
+<h2> {{item.name}} Info </h2>
+</div>
+
+<div class="itemdetails">
+  <b>Name:</b>
+</div>
+{{item.name}}
+<div class="itemdetails">
+  <b>Category:</b>
+</div>
+  {{item.category_categories}}
+<div class="itemdetails">
+  <b>Description:</b>
+</div>
+  {{item.description}}
+
+<div>
+  <a href = '{{url_for('editItem', category_categories = item.category_categories, item_name = item.name)}}'> edit</a>
+   /
+  <a href = '{{url_for('deleteItem', category_categories = item.category_categories, item_name = item.name)}}'>delete </a>
+</div>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+</head>
+
+<body>
+<div class="bar">
+<h1> Catalog App </h1>
+</div>
+<div class = "login" style="color:white">
+{%if 'username' not in session %}
+        <a href="{{url_for('showLogin')}}"> <b>Login</b> </a>
+
+{% endif %}
+</div>
+
+<div class = "inform"> <h2> Categories </h2>
+</div>
+{% for c in categories %}
+<div>
+  <b> {{c.categories}} </b> </br>
+
+</div>
+
+{% endfor %}
+</div>
+
+<div class = "inform"> <h2> Latest Items </h2> </div>
+<div class = "latest items">
+{% for i in items %}
+ {{i.id}}. {{i.name}} ({{i.category_categories}}) </br>
+{% endfor %}
+</div>
+</div>
+</br></br></br>
+<div class="jsoninfo"> <b> Check JSON </b> </div>
+<a href="{{url_for('showCategoriesJSON')}}">Categories</a> |
+<a href="{{url_for('showItemsJSON')}}">Items</a>
+</body>
+</html>

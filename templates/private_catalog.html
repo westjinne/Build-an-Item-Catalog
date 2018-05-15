@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+</head>
+
+<body>
+<div class="bar">
+<h1> Catalog App </h1>
+</div>
+
+<div class = "logout">
+  {% if 'username' in session %}
+    <a href="{{url_for('showLogout')}}"> Logout: {{session['email']}} </a>
+  {% endif %}
+</div>
+
+<div class="flash">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li><strong>{{message}}</strong></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+<div>
+<div class = "inform"> <h2> Categories </h2>
+  <a href = '{{url_for('newCategory')}}'> Add Category</a> </br></br>
+</div>
+{% for c in categories %}
+<div>
+  <b> {{c.categories}} </b> (
+  <a href = '{{url_for('showCategorywithItem', category_categories = c.categories)}}'>view</a>
+   /
+  <a href = '{{url_for('editCategory', category_categories = c.categories)}}'>edit</a>
+   /
+  <a href = '{{url_for('deleteCategory', category_categories = c.categories)}}'>delete</a>) </br></br>
+</div>
+
+{% endfor %}
+</div>
+
+<div class = "inform"> <h2> Latest Items </h2>
+  <a href = '{{url_for('newItem', category_categories = category_categories)}}'> Add Item</a> </br></br>
+</div>
+<div class = "latest items">
+{% for i in items %}
+ {{i.id}}. {{i.name}} ({{i.category_categories}}) </br>
+{% endfor %}
+</div>
+</div>
+</br></br></br>
+<div class="jsoninfo"> <b> Check JSON </b> </div>
+<a href="{{url_for('showCategoriesJSON')}}">Categories</a> |
+<a href="{{url_for('showItemsJSON')}}">Items</a>
+</body>
+</html>

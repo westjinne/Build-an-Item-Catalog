@@ -1,0 +1,42 @@
+body
+{ font-family: : sans-serif;}
+h2, h3, h4
+{ color: #1a979e;}
+
+.bar {
+  background: #a0a0a0;
+  color: #ffffff;
+  padding: 5px;
+}
+.login {
+  background: #cbeff4;
+  color: #ffffff;
+  padding: 3px;
+}
+.logout {
+  background: #cbeff4;
+  color: #ffffff;
+  padding: 3px;
+}
+
+.inform {
+  color: #1a979e;
+}
+
+.flash {
+  background-color: #e6f7f6;
+  color: #f943d2;
+}
+
+.alert{
+  background-color: #991b1b
+  color: #ffffff;
+}
+
+.jsoninfo{
+  color:#1a979e;
+}
+
+.itemdetails {
+  color:#1a979e;
+}

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+  </head>
+<body>
+  <div class = "bar">
+  <a href='{{url_for('showCatalog')}}'> <h1> Catalog App </h1> </a>
+  </div>
+
+<form action = "{{url_for('newCategory')}}" method = 'POST'>
+  <div> <h2> Add New Category : </h2></div>
+    <input type = 'text' size = '40' name = 'categories'>
+    <input type = 'submit' value = 'Create'>
+
+    <a href = '{{url_for('showCatalog')}}'>Cancel </a>
+
+
+  <div> <h2> Preexistence Categories: </h2> </div>
+    {% for c in pre_categories %}
+
+    <div>
+       {{c.categories}}
+    </div>
+
+  {% endfor %}
+
+</form>
+
+</body>
+</html>

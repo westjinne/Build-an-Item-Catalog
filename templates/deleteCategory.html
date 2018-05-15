@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename = 'style.css')}}'>
+</head>
+
+<body>
+  <div class = "bar">
+  <a href='{{url_for('showCatalog')}}'> <h1> Catalog App </h1> </a>
+  </div>
+
+<div class = "inform">
+<h2> Are you sure you want to delete {{category.categories}}? </h2>
+</div>
+
+<form action = "{{url_for('deleteCategory', category_categories = category_categories)}}" method = 'POST'>
+
+<div>
+<input type = 'submit' value = 'Delete'>
+</div>
+
+<a href = '{{url_for('showCatalog')}}'> Cancel </a>
+
+</form>
+
+</body>
+</html>
